@@ -39,3 +39,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# reference material — not part of the deployed site
+/old portfolio/
+
+# local dev-server tooling config
+/.claude/

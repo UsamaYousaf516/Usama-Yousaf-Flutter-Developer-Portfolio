@@ -1,26 +1,164 @@
 @import "tailwindcss";
 
+/* ---------------------------------------------------------------------- */
+/* USAMA OS — design tokens                                               */
+/* Paper Mode (light) is the default identity; Ink Mode is the dark twin. */
+/* ---------------------------------------------------------------------- */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --paper-white: #f5f3ee;
+  --pure-surface: #fcfbf8;
+  --warm-stone: #d8d3c9;
+  --soft-grey: #a6a199;
+  --dark-ink: #1c1c1a;
+  --muted-ink: #5d5b56;
+  --muted-blue: #657d8a;
+  --soft-olive: #7c8567;
+  --clay-red: #a85f4a;
+  --fine-border: rgba(28, 28, 26, 0.14);
+  --grid-line: rgba(28, 28, 26, 0.05);
+
+  --color-bg: var(--paper-white);
+  --color-surface: var(--pure-surface);
+  --color-structure: var(--warm-stone);
+  --color-muted: var(--soft-grey);
+  --color-ink: var(--dark-ink);
+  --color-ink-muted: var(--muted-ink);
+  --color-accent-blue: var(--muted-blue);
+  --color-accent-olive: var(--soft-olive);
+  --color-accent-clay: var(--clay-red);
+  --color-border: var(--fine-border);
+  --color-grid: var(--grid-line);
+
+  --shadow-window: 0 2px 6px rgba(28, 28, 26, 0.06), 0 12px 32px rgba(28, 28, 26, 0.08);
+  --shadow-soft: 0 1px 2px rgba(28, 28, 26, 0.05);
+
+  --ease-standard: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-out-soft: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+
+  --dur-micro: 150ms;
+  --dur-button: 160ms;
+  --dur-window-open: 420ms;
+  --dur-window-close: 300ms;
+  --dur-page: 550ms;
+  --dur-hero: 1100ms;
+  --dur-reveal: 650ms;
+}
+
+:root[data-theme="dark"] {
+  --deep-ink: #151513;
+  --elevated-surface: #1d1d1a;
+  --soft-surface: #252521;
+  --warm-grey: #9b978e;
+  --paper-text: #eae7df;
+  --muted-blue: #8198a3;
+  --soft-olive: #949d7d;
+  --clay-red: #c07661;
+  --fine-border: rgba(234, 231, 223, 0.12);
+  --grid-line: rgba(234, 231, 223, 0.035);
+
+  --color-bg: var(--deep-ink);
+  --color-surface: var(--elevated-surface);
+  --color-structure: var(--soft-surface);
+  --color-muted: var(--warm-grey);
+  --color-ink: var(--paper-text);
+  --color-ink-muted: var(--warm-grey);
+  --color-accent-blue: var(--muted-blue);
+  --color-accent-olive: var(--soft-olive);
+  --color-accent-clay: var(--clay-red);
+  --color-border: var(--fine-border);
+  --color-grid: var(--grid-line);
+
+  --shadow-window: 0 2px 6px rgba(0, 0, 0, 0.24), 0 20px 48px rgba(0, 0, 0, 0.32);
+  --shadow-soft: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-bg: var(--color-bg);
+  --color-surface: var(--color-surface);
+  --color-structure: var(--color-structure);
+  --color-muted: var(--color-muted);
+  --color-ink: var(--color-ink);
+  --color-ink-muted: var(--color-ink-muted);
+  --color-accent-blue: var(--color-accent-blue);
+  --color-accent-olive: var(--color-accent-olive);
+  --color-accent-clay: var(--color-accent-clay);
+  --color-border: var(--color-border);
+  --color-grid: var(--color-grid);
+
+  --font-sans: var(--font-inter);
+  --font-serif: var(--font-instrument-serif);
+  --font-mono: var(--font-plex-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  border-color: var(--color-border);
+}
+
+html {
+  color-scheme: light;
+}
+html[data-theme="dark"] {
+  color-scheme: dark;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--color-accent-clay);
+  color: var(--pure-surface);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-structure);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  scrollbar-width: none;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 100;
+  background: var(--color-ink);
+  color: var(--color-bg);
+  padding: 0.75rem 1.25rem;
+  font-family: var(--font-mono), monospace;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.skip-link:focus {
+  left: 1rem;
+  top: 1rem;
 }
