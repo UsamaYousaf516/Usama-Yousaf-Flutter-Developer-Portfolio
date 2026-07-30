@@ -31,11 +31,11 @@ export const labItems: LabItem[] = [
   },
   {
     id: "battle-content-pipeline",
-    title: "Territory Battle Content Pipeline",
+    title: "Pixel Clash Video Library",
     category: "Automation tools",
     status: "in-progress",
     description:
-      "An automated capture-and-export pipeline for Pixel Clash battles, so interesting matches can be turned into short-form clips without manually recording each one.",
+      "Vertical (9:16) battle capture already works client-side via canvas.captureStream + MediaRecorder. Building the server-side library — storing, tagging, and browsing generated clips through the Battle/Video tables already modeled in Prisma — is the in-progress part.",
     relatedProjectSlug: "pixel-clash",
   },
   {

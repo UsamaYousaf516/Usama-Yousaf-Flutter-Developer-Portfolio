@@ -22,7 +22,7 @@ export const experiments: Experiment[] = [
       "Test whether simple 2D physics — friction and restitution — could produce a satisfying flick-and-collide feel without a full game engine.",
     tested: "Circle-circle collision and friction decay on a constrained board, tuned by hand rather than a physics preset.",
     result:
-      "Confirmed the approach was feasible with a lightweight physics layer, which informed the physics decisions later made for Pixel Clash.",
+      "Confirmed the approach was feasible with a lightweight, hand-tuned physics layer rather than a full physics engine.",
     technologies: ["Flutter", "Forge2D"],
     status: "prototype",
   },
@@ -31,10 +31,10 @@ export const experiments: Experiment[] = [
     code: "EXP–002",
     title: "Territory Battle Behaviors",
     objective: "Find a character-behavior model that reads as strategic and watchable without requiring instructions.",
-    tested: "Weighted decision rules versus more elaborate behavior trees for territory-control battles.",
+    tested: "Named algorithm archetypes (hunter, mirror, solidify, flood, centerpull, and more) versus more elaborate behavior trees for territory-control battles.",
     result:
-      "Simple, weighted rules produced more legible and watchable outcomes than the more complex behavior tree — this became the core behavior model in Pixel Clash.",
-    technologies: ["Flutter", "Flame"],
+      "Simple, named strategies produced more legible and watchable outcomes than a more complex behavior tree — this became the 20-Pattern roster in Pixel Clash.",
+    technologies: ["TypeScript", "Canvas API"],
     status: "released",
     relatedProjectSlug: "pixel-clash",
   },

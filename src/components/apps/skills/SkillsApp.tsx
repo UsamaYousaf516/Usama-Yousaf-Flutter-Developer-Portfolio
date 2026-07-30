@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { AppWindow } from "@/components/desktop/AppWindow";
-import { skillCategories } from "@/lib/skills";
+import { skillCategories, coreStack } from "@/lib/skills";
 import { getProject } from "@/lib/projects";
 import { staggerContainer, fadeUp } from "@/lib/motion";
 
@@ -30,6 +30,27 @@ export function SkillsApp() {
           <p className="mt-2 max-w-lg text-sm leading-relaxed" style={{ color: "var(--color-ink-muted)" }}>
             Select a skill to see where it was actually used, rather than an arbitrary score.
           </p>
+        </motion.div>
+
+        <motion.div
+          variants={fadeUp}
+          className="rounded-xl border p-5"
+          style={{ borderColor: "var(--color-border)", background: "var(--color-surface)" }}
+        >
+          <span className="font-mono text-[10px] uppercase tracking-widest" style={{ color: "var(--color-accent-olive)" }}>
+            Core stack
+          </span>
+          <div className="mt-3 flex flex-wrap gap-2">
+            {coreStack.map((item) => (
+              <span
+                key={item}
+                className="rounded-full border px-3 py-1.5 font-mono text-[11px] uppercase tracking-wide"
+                style={{ borderColor: "var(--color-border)", color: "var(--color-ink)", background: "var(--color-bg)" }}
+              >
+                {item}
+              </span>
+            ))}
+          </div>
         </motion.div>
 
         <div className="grid gap-8 lg:grid-cols-[1.3fr_1fr] lg:items-start">

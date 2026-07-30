@@ -11,6 +11,21 @@ export interface SkillCategory {
   skills: Skill[];
 }
 
+/** Highest-signal keywords for a fast recruiter scan — purely a quick-view row, not tied to selection state. */
+export const coreStack = [
+  "Flutter",
+  "Dart",
+  "TypeScript",
+  "Firebase",
+  "Supabase",
+  "REST APIs",
+  "WebSockets",
+  "State Management",
+  "Real-Time Systems",
+  "Git & Version Control",
+  "AI-Assisted Development",
+];
+
 export const skillCategories: SkillCategory[] = [
   {
     id: "product-development",
@@ -18,14 +33,20 @@ export const skillCategories: SkillCategory[] = [
     skills: [
       {
         name: "Flutter",
-        practicalNote: "Primary framework across every shipped project — mobile, web, and admin surfaces alike.",
+        practicalNote: "Primary framework across every shipped mobile/web product — mobile, web, and admin surfaces alike.",
         technicalExample: "One widget tree, three targets: the Ludino mobile app and its Flutter Web admin portal share component patterns.",
-        relatedProjectSlugs: ["ludino", "restart-fitness", "pixel-clash", "admin-systems"],
+        relatedProjectSlugs: ["ludino", "restart-fitness", "admin-systems"],
       },
       {
         name: "Dart",
-        practicalNote: "Language fundamentals underneath every Flutter build, including the simulation logic in Pixel Clash.",
-        technicalExample: "Used Dart isolates-free, tick-based update loops for the Pixel Clash battle simulation.",
+        practicalNote: "Language fundamentals underneath every Flutter build.",
+        technicalExample: "Shared Dart models and service layers reused between the Ludino mobile app and its Flutter Web admin portal.",
+        relatedProjectSlugs: ["ludino", "admin-systems"],
+      },
+      {
+        name: "TypeScript",
+        practicalNote: "Primary language for web-native projects outside the Flutter product line.",
+        technicalExample: "Pixel Clash's simulation engine, Node server, and Prisma data layer are all written in TypeScript.",
         relatedProjectSlugs: ["pixel-clash"],
       },
       {
@@ -166,6 +187,18 @@ export const skillCategories: SkillCategory[] = [
         technicalExample: "Room state reconciled optimistically on the client, corrected against WebSocket events from the server.",
         relatedProjectSlugs: ["ludino"],
       },
+      {
+        name: "Prisma & SQLite",
+        practicalNote: "Lightweight relational persistence for projects that don't need a hosted database service.",
+        technicalExample: "Pixel Clash persists battle history to a Render-mounted, disk-backed SQLite database through Prisma.",
+        relatedProjectSlugs: ["pixel-clash"],
+      },
+      {
+        name: "Custom Node.js Servers",
+        practicalNote: "Reaches for a plain node:http server instead of a framework when the API surface is small.",
+        technicalExample: "Pixel Clash's entire backend is a handful of Zod-validated Node HTTP endpoints with no framework dependency.",
+        relatedProjectSlugs: ["pixel-clash"],
+      },
     ],
   },
   {
@@ -247,25 +280,49 @@ export const skillCategories: SkillCategory[] = [
     ],
   },
   {
-    id: "creative-technology",
-    name: "Creative Technology",
+    id: "tools-process",
+    name: "Tools & Process",
     skills: [
       {
-        name: "Flame",
-        practicalNote: "Game engine used for the Pixel Clash battle simulation.",
-        technicalExample: "Flame's component/game-loop model driving the tick-based territory simulation.",
+        name: "Git & Version Control",
+        practicalNote: "Standard branch-per-feature workflow across every professional and personal project.",
+        technicalExample: "Feature branches reviewed and merged independently across InfiniTech and Neusoftix codebases.",
+        relatedProjectSlugs: ["ludino", "admin-systems"],
+      },
+      {
+        name: "App Store & Play Store Release Management",
+        practicalNote: "Taken multiple production apps through submission, review, and release on both stores.",
+        technicalExample: "Managed build signing, versioning, and store listings across 7+ shipped client and company apps.",
+        relatedProjectSlugs: ["ludino", "restart-fitness", "elite-fitness"],
+      },
+      {
+        name: "Cross-Functional Collaboration",
+        practicalNote: "Coordinated directly with backend, design, and QA rather than working in a Flutter-only silo.",
+        technicalExample: "Aligned with backend on API contracts and with design on responsive breakpoints across multi-role products like DNF's three-role marketplace.",
+        relatedProjectSlugs: ["dnf", "admin-systems"],
+      },
+    ],
+  },
+  {
+    id: "creative-technology",
+    name: "Creative Technology & AI",
+    skills: [
+      {
+        name: "Deterministic Simulation Design",
+        practicalNote: "Builds simulations around a seeded PRNG so any run can be exactly reproduced and replayed.",
+        technicalExample: "Pixel Clash's entire battle engine runs on a single seeded xorshift PRNG, enabling checksum-verified replay of any match.",
         relatedProjectSlugs: ["pixel-clash"],
       },
       {
-        name: "Forge2D",
-        practicalNote: "Physics layer underneath Pixel Clash's movement and collision behavior.",
-        technicalExample: "Lightweight 2D physics bodies for character movement without a full custom physics engine.",
+        name: "Browser-Native Video Capture",
+        practicalNote: "Exports shareable video directly from the browser with no server-side rendering pipeline.",
+        technicalExample: "Pixel Clash captures battles as vertical (9:16) clips via canvas.captureStream() piped into MediaRecorder — ready for Shorts/Reels/TikTok with zero added infrastructure.",
         relatedProjectSlugs: ["pixel-clash"],
       },
       {
         name: "Game prototypes",
         practicalNote: "Self-directed exploration of watchable, rule-based simulations for short-form content.",
-        technicalExample: "Weighted decision rules tuned for legibility over behavioral complexity in Pixel Clash's characters.",
+        technicalExample: "20 distinct algorithm archetypes (hunter, mirror, solidify, flood, centerpull, and more) tuned for legibility over one-size-fits-all complexity across Pixel Clash's roster.",
         relatedProjectSlugs: ["pixel-clash"],
       },
       {
@@ -287,9 +344,9 @@ export const skillCategories: SkillCategory[] = [
         relatedProjectSlugs: [],
       },
       {
-        name: "AI-assisted product exploration",
-        practicalNote: "Exploring how AI-assisted workflows fit into product and content development.",
-        technicalExample: "Early-stage exploration — see the Lab app for in-progress work in this area.",
+        name: "AI-Assisted Development",
+        practicalNote: "Uses AI coding agents to scaffold, build, and ship real production work — not just as a novelty.",
+        technicalExample: "This entire portfolio — architecture, component system, content pipeline, and deployment setup — was built through an agentic AI-assisted workflow, directed and reviewed end-to-end.",
         relatedProjectSlugs: [],
       },
     ],
