@@ -8,7 +8,7 @@ import { WorkPreview } from "./WorkPreview";
 export function HomeWorkspace() {
   return (
     <div className="mx-auto w-full max-w-[1120px] px-4 pb-28 pt-[4.75rem] md:px-8 md:pb-20 md:pt-24">
-      <div className="grid gap-3 md:grid-cols-5">
+      <div className="grid items-stretch gap-3 md:grid-cols-5">
         <div className="md:col-span-3">
           <IntroPanel />
         </div>
